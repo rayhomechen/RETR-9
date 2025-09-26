@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RETR-9 / TJSReC-2 — Conference</title>
+  <style>
+    :root{
+      --accent:#e6c89a;
+      --nav-bg: rgba(255,255,255,0.85);
+      --text-dark: #2b2b2b;
+    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;background:#f6f4f2;color:var(--text-dark)}
+
+    /* HERO */
+    .hero{
+      min-height:86vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+      box-shadow:inset 0 -120px 120px rgba(0,0,0,0.25);
+    }
+    .overlay{
+      position:absolute;inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.45) 85%);
+    }
+    .hero-content{
+      position:relative;z-index:2;max-width:1100px;width:100%;padding:40px 20px;color:white;
+      display:flex;gap:24px;align-items:flex-end;justify-content:flex-start;
+    }
+    .title{
+      font-size:clamp(28px,5vw,48px);font-weight:800;letter-spacing:2px;margin:0;text-shadow:0 6px 18px rgba(0,0,0,0.45);
+    }
+    .subtitle{opacity:0.95;margin-top:8px;font-weight:600}
+
+    /* RIGHT NAV */
+    .side-nav{
+      position:fixed;right:24px;top:50%;transform:translateY(-50%);
+      background:var(--nav-bg);backdrop-filter: blur(6px);border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+    .side-nav ul{list-style:none;margin:0;padding:4px;display:flex;flex-direction:column;gap:8px}
+    .side-nav a{display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;color:var(--text-dark);font-weight:700}
+    .side-nav a:hover{background:rgba(0,0,0,0.06)}
+
+    /* SECTIONS */
+    main{max-width:1100px;margin:36px auto;padding:18px}
+    section{padding:48px 18px;border-radius:12px;background:white;margin-bottom:20px;box-shadow:0 6px 18px rgba(20,20,20,0.05)}
+    section h2{margin-top:0}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .side-nav{right:12px;padding:8px;}
+      .side-nav ul{flex-direction:row}
+      .side-nav a{padding:8px 10px;font-size:14px}
+      .hero-content{padding:26px}
+    }
+
+    /* Smooth scroll */
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+<body>
+
+  <!-- Hero with poster image (place image file next to this html) -->
+  <header class="hero" id="top" style="background-image: url('S__10772498.png');">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <div>
+        <h1 class="title">RETR-9 / TJSReC-2</h1>
+        <div class="subtitle">The 9th International Workshop on Radical and Electron Transfer Reactions<br>Second Taiwan–Japan Symposium on Reaction Control</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Right side navigation -->
+  <nav class="side-nav" aria-label="Page navigation">
+    <ul>
+      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfGPV6LD3SnmQhlzzhXizz6SNNKymEwTgCN11uXiE5nYMAWpQ/viewform?pli=1" target="_blank">Registration Form</a></li>
+      <li><a href="https://ntnucamp.sce.ntnu.edu.tw/2025TJSReC/login.php" target="_blank">Registration Payment</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#venue">Venue Information</a></li>
+    </ul>
+  </nav>
+
+  <main>
+ 
+<section id="program">
+  <h2>Program</h2>
+  <ol>
+    <li>
+      November 2nd (Sun)
+      <ul>
+        <li>14:50 - Opening Remarks</li>
+        <li>Lectures</li>
+        <li>18:30 - Banquet</li>
+      </ul>
+    </li>
+    <li>
+      November 3rd (Mon)
+      <ul>
+        <li>08:20 - Lectures</li>
+        <li>11:00 - Lunch</li>
+        <li>Excursion
+          <ul>
+            <li>Yilan</li>
+          </ul>
+        </li>
+        <li>17:30 - Visit to NTU Condense Mass Center</li>
+        <li>19:30 - Conference Dinner</li>
+      </ul>
+    </li>
+    <li>
+      November 4th (Tue)
+      <ul>
+        <li>08:20 - Lectures</li>
+        <li>Closing Remarks</li>
+        <li>11:30-13:00 - Lunch</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+
+    <section id="venue">
+      <h2>Venue Information</h2>
+      <p>Venue: NTNU Extension Center, Lecture room 213<br>No 129, Sec. 1, Heping East Rd., Da-an dist., Taipei</p>
+      <p>Transportation tips: Metro station, buses, parking info, nearby hotels.</p>
+      <div style="height:300px;background:#eef2f5;border-radius:8px;display:flex;align-items:center;justify-content:center">
+        <em>Map placeholder — replace with embedded Google Map iframe if desired.</em>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align:center;padding:20px;color:#666;font-size:14px">© RETR-9 / TJSReC-2</footer>
+
+</body>
+</html>
