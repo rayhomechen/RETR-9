@@ -13,50 +13,163 @@
     html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;background:#f6f4f2;color:var(--text-dark)}
 
     /* HERO */
-    .hero{
-      min-height:86vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      background-size:cover;
-      background-position:center center;
-      background-repeat:no-repeat;
-      box-shadow:inset 0 -120px 120px rgba(0,0,0,0.25);
+    .hero {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff; /* 預設底色 */
+      overflow: hidden;
     }
-    .overlay{
-      position:absolute;inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.45) 85%);
+    
+    .hero-img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    .hero-content{
-      position:relative;z-index:2;max-width:1100px;width:100%;padding:40px 20px;color:white;
-      display:flex;gap:24px;align-items:flex-end;justify-content:flex-start;
-    }
+
     .title{
       font-size:clamp(28px,5vw,48px);font-weight:800;letter-spacing:2px;margin:0;text-shadow:0 6px 18px rgba(0,0,0,0.45);
     }
     .subtitle{opacity:0.95;margin-top:8px;font-weight:600}
 
-    /* RIGHT NAV */
-    .side-nav{
-      position:fixed;right:24px;top:50%;transform:translateY(-50%);
-      background:var(--nav-bg);backdrop-filter: blur(6px);border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,0.12);
-    }
-    .side-nav ul{list-style:none;margin:0;padding:4px;display:flex;flex-direction:column;gap:8px}
-    .side-nav a{display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;color:var(--text-dark);font-weight:700}
-    .side-nav a:hover{background:rgba(0,0,0,0.06)}
+/* RIGHT NAV - 柔和橘色漸層 + 50%透明 + 響應式 */
+.side-nav{
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(255,179,71,0.5), /* #FFB347 50%透明 */
+    rgba(255,126,95,0.5)  /* #FF7E5F 50%透明 */
+  );
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
 
-    /* SECTIONS */
+.side-nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.side-nav a{
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 150%;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.side-nav a:hover{
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.05);
+}
+
+/* 響應式字體調整 */
+@media (max-width: 800px) {
+  .side-nav a{
+    font-size: 120%;
+    padding: 8px 12px;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1600px) {
+  .side-nav a{
+    font-size: 150%;
+    padding: 10px 14px;
+  }
+}
+
+@media (min-width: 1601px) {
+  .side-nav a{
+    font-size: 180%;
+    padding: 12px 16px;
+  }
+}
+
+
+
+    /* SECTIONS */loading
     main{max-width:1100px;margin:36px auto;padding:18px}
-    section{padding:48px 18px;border-radius:12px;background:white;margin-bottom:20px;box-shadow:0 6px 18px rgba(20,20,20,0.05)}
+    section{padding:48px 18px;border-radius:12px;background:white;margin-bottom:20px;box-shadow:0 6px 18px rgba(20,20,20,0.05);z-index: 10}
     section h2{margin-top:0}
 
     /* Responsive */
     @media (max-width:900px){
       .side-nav{right:12px;padding:8px;}
-      .side-nav ul{flex-direction:row}
+      .side-nav ul{flex-direction:column}
       .side-nav a{padding:8px 10px;font-size:14px}
       .hero-content{padding:26px}
     }
+
+
+h2 {
+  font-family: "Playfair Display", "Noto Serif TC", serif;
+  font-weight: 700;
+  text-align: center;
+  color: #b34700; /* 橘棕色，呼應主視覺 */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+  margin: 1.5rem 0;
+  line-height: 1.2;
+  transition: all 0.3s ease-in-out;
+}
+
+/* 桌機超大螢幕 (2217px 以上) */
+@media (min-width: 2217px) {
+  h2 {
+    font-size: 3.8rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* 中型螢幕 (1600px ~ 2216px) */
+@media (max-width: 2216px) and (min-width: 1600px) {
+  h2 {
+    font-size: 3.2rem;
+  }
+}
+
+/* 平板或小筆電 (800px ~ 1599px) */
+@media (max-width: 1599px) and (min-width: 800px) {
+  h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* 手機 (800px 以下) */
+@media (max-width: 799px) {
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /* Smooth scroll */
     html{scroll-behavior:smooth}
@@ -65,15 +178,10 @@
 <body>
 
   <!-- Hero with poster image (place image file next to this html) -->
-  <header class="hero" id="top" style="background-image: url('S__10772498.png');">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <div>
-        <h1 class="title">RETR-9 / TJSReC-2</h1>
-        <div class="subtitle">The 9th International Workshop on Radical and Electron Transfer Reactions<br>Second Taiwan–Japan Symposium on Reaction Control</div>
-      </div>
-    </div>
+  <header class="hero" id="top">
+    <img src="header-2217x413.jpg" alt="RETR-9 Conference Header" class="hero-img">
   </header>
+
 
   <!-- Right side navigation -->
   <nav class="side-nav" aria-label="Page navigation">
@@ -87,61 +195,38 @@
 
   <main>
  
+ <section class="main-photo">
+  <picture>
+    <!-- 小螢幕用低解析度 -->
+    <source srcset="S__10772498-800w.jpg" media="(max-width: 800px)">
+    <!-- 中螢幕用中等解析度 -->
+    <source srcset="S__10772498-1600w.jpg" media="(max-width: 1600px)">
+    <!-- 其他情況載入完整解析度 -->
+    <img src="S__10772498-3324w.jpg" 
+         alt="Conference Main Visual" 
+         loading="lazy" 
+         style="width:100%;height:auto;display:block;">
+  </picture>
+</section>
+
+ 
 <section id="program">
   <h2>Program</h2>
-  <ol>
-    <li>
-      November 2nd (Sun)
-      <ul>
-        <li>14:50 - Opening Remarks</li>
-        <li>Lectures</li>
-        <li>18:30 - Banquet</li>
-      </ul>
-    </li>
-    <li>
-      November 3rd (Mon)
-      <ul>
-        <li>08:20 - Lectures</li>
-        <li>11:00 - Lunch</li>
-        <li>Excursion
-          <ul>
-            <li>Yilan</li>
-          </ul>
-        </li>
-        <li>17:30 - Visit to NTU Condense Mass Center</li>
-        <li>19:30 - Conference Dinner</li>
-      </ul>
-    </li>
-    <li>
-      November 4th (Tue)
-      <ul>
-        <li>08:20 - Lectures</li>
-        <li>Closing Remarks</li>
-        <li>11:30-13:00 - Lunch</li>
-      </ul>
-    </li>
-  </ol>
+  <div class="program-image">
+    <img src="program.jpg" alt="Program Schedule" loading="lazy"
+	         style="width:100%;height:auto;display:block;">
+  </div>
 </section>
 
 
     <section id="venue">
       <h2>Venue Information</h2>
-      <p>Venue: NTNU Extension Center, Lecture room 213<br>No 129, Sec. 1, Heping East Rd., Da-an dist., Taipei</p>
-      <p>Transportation tips: Metro station, buses, parking info, nearby hotels.</p>
-<div style="height:300px;border-radius:8px;overflow:hidden;">
+      <p style="font-size: 150%;">Venue: NTNU Extension Center, Lecture room 213<br>No 129, Sec. 1, Heping East Rd., Da-an dist., Taipei</p>
+      <p style="font-size: 150%;">Transportation tips: Metro station, buses, parking info, nearby hotels.</p>
+<div style="height:600px;border-radius:8px;overflow:hidden;">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28921.456212181547!2d121.49563001562498!3d25.027896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9845553d96b%3A0x6d5a89871bd2604b!2z5ZyL56uL6Ie654Gj5bir56-E5aSn5a246YCy5L-u5o6o5buj5a246Zmi!5e0!3m2!1szh-TW!2stw!4v1758865934590!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
-
-  <!--iframe 
-    src="https://www.google.com/maps/embed?pb=你的地圖代碼" 
-    width="100%" 
-    height="100%" 
-    style="border:0;" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe-->
 </div>
 
     </section>
