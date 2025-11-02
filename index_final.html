@@ -10,14 +10,9 @@
       --nav-bg: rgba(255,255,255,0.85);
       --text-dark: #2b2b2b;
     }
-    html,body{
-      height:100%;
-      margin:0;
-      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background:#f6f4f2;
-      color:var(--text-dark);
-    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;background:#f6f4f2;color:var(--text-dark)}
 
+    /* HERO */
     .hero {
       width: 100%;
       display: flex;
@@ -31,55 +26,25 @@
       height: auto;
       display: block;
     }
+    .title{
+      font-size:clamp(28px,5vw,48px);font-weight:800;letter-spacing:2px;margin:0;text-shadow:0 6px 18px rgba(0,0,0,0.45);
+    }
+    .subtitle{opacity:0.95;margin-top:8px;font-weight:600}
 
-    /* === 收合導覽列樣式 === */
-    .side-nav {
+    /* RIGHT NAV - 柔和橘色漸層 + 50%透明 + 響應式 */
+    .side-nav{
       position: fixed;
       right: 24px;
       top: 50%;
       transform: translateY(-50%);
       background: linear-gradient(135deg, rgba(255,179,71,0.5), rgba(255,126,95,0.5));
       backdrop-filter: blur(6px);
-      border-radius: 12px 0 0 12px;
+      border-radius: 12px;
       padding: 12px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      display: flex;
-      align-items: stretch;
-      transition: all 0.4s ease;
-      overflow: hidden;
-      z-index: 100;
+      transition: all 0.4s ease-in-out;
+      z-index: 1000;
     }
-
-    .side-toggle {
-      width: 40px;
-      background: rgba(255,255,255,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border-radius: 8px 0 0 8px;
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-    .side-toggle:hover { background: rgba(255,255,255,0.4); }
-
-    .side-toggle span {
-      display: inline-block;
-      font-size: 22px;
-      color: #fff;
-      pointer-events: none;
-      transition: transform 0.3s ease;
-    }
-
-    .side-content {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-left: 10px;
-      overflow: hidden;
-      transition: all 0.4s ease;
-    }
-
     .side-nav ul{
       list-style: none;
       margin: 0;
@@ -87,8 +52,8 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      transition: opacity 0.3s ease 0.1s;
     }
-
     .side-nav a{
       display: inline-block;
       padding: 10px 14px;
@@ -99,23 +64,89 @@
       font-size: 150%;
       transition: background 0.3s ease, transform 0.2s ease;
     }
-    .side-nav a:hover{ background: rgba(255,255,255,0.2); transform: scale(1.05); }
+    .side-nav a:hover{
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.05);
+    }
 
-    .side-nav.collapsed .side-content {
-      opacity: 0;
+    /* 隱藏 side-nav 內容，只保留箭頭按鈕 */
+    .side-nav.side-nav-hidden{
       width: 0;
-      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: none;
+      box-shadow: none;
+    }
+    .side-nav.side-nav-hidden ul{
+      opacity: 0;
       pointer-events: none;
+      height: 0;
+      overflow: hidden;
     }
 
-    .side-nav.collapsed {
-      padding: 12px 6px;
+    /* toggle 按鈕固定位置 */
+    .toggle-btn-wrapper{
+      position: fixed;
+      top: 50%;
+      right: 24px;
+      transform: translateY(-50%);
+      z-index: 1001;
+    }
+    .toggle-btn{
       width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: #ff7e5f;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .toggle-btn:hover{
+      background: #ffb347;
+      transform: scale(1.05);
     }
 
+    /* SECTIONS */
     main{max-width:1100px;margin:36px auto;padding:18px}
     section{padding:48px 18px;border-radius:12px;background:white;margin-bottom:20px;box-shadow:0 6px 18px rgba(20,20,20,0.05);z-index: 10}
     section h2{margin-top:0}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .side-nav{right:12px;padding:8px;}
+      .side-nav a{padding:8px 10px;font-size:14px;}
+      .toggle-btn-wrapper{right:12px;}
+    }
+
+    h2 {
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+      font-weight: 700;
+      text-align: center;
+      color: #b34700;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+      margin: 1.5rem 0;
+      line-height: 1.2;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @media (max-width: 799px) {
+      h2 { font-size: 1.6rem; font-weight: 600; }
+    }
+    @media (min-width: 800px) and (max-width: 1599px) {
+      h2 { font-size: 2.2rem; }
+    }
+    @media (min-width: 1600px) and (max-width: 2216px) {
+      h2 { font-size: 3.2rem; }
+    }
+    @media (min-width: 2217px) {
+      h2 { font-size: 3.8rem; letter-spacing: 1px; }
+    }
 
     html{scroll-behavior:smooth}
   </style>
@@ -126,19 +157,30 @@
   <img src="header-2217x413.jpg" alt="RETR-9 Conference Header" class="hero-img">
 </header>
 
-<nav class="side-nav" aria-label="Page navigation">
-  <div class="side-toggle"><span>⮞</span></div>
-  <div class="side-content">
-    <ul>
-      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfGPV6LD3SnmQhlzzhXizz6SNNKymEwTgCN11uXiE5nYMAWpQ/viewform?pli=1" target="_blank">Registration Form</a></li>
-      <li><a href="https://ntnucamp.sce.ntnu.edu.tw/2025TJSReC/login.php" target="_blank">Registration Payment</a></li>
-      <li><a href="#program">Program</a></li>
-      <li><a href="#Venue1">Venue Information</a></li>
-    </ul>
-  </div>
+<!-- 側邊導航 -->
+<nav class="side-nav" id="sideNav" aria-label="Page navigation">
+  <ul>
+    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfGPV6LD3SnmQhlzzhXizz6SNNKymEwTgCN11uXiE5nYMAWpQ/viewform?pli=1" target="_blank">Registration Form</a></li>
+    <li><a href="https://ntnucamp.sce.ntnu.edu.tw/2025TJSReC/login.php" target="_blank">Registration Payment</a></li>
+    <li><a href="#program">Program</a></li>
+    <li><a href="#Venue1">Venue Information</a></li>
+  </ul>
 </nav>
 
+<!-- 獨立 toggle 按鈕 -->
+<div class="toggle-btn-wrapper" id="toggleBtnWrapper">
+  <div id="navToggle" class="toggle-btn" aria-expanded="true" aria-controls="sideNav">&raquo;</div>
+</div>
+
 <main>
+  <section class="main-photo">
+    <picture>
+      <source srcset="S__10772498-800w.jpg" media="(max-width: 800px)">
+      <source srcset="S__10772498-1600w.jpg" media="(max-width: 1600px)">
+      <img src="S__10772498-3324w.jpg" alt="Conference Main Visual" loading="lazy" style="width:100%;height:auto;display:block;">
+    </picture>
+  </section>
+
   <section id="program">
     <h2>Program</h2>
     <div class="program-image">
@@ -147,9 +189,32 @@
   </section>
 
   <section id="Venue1">
-    <h2>Venue Information</h2>
+    <h2>MRT Information</h2>
     <div class="Venue1-image">
       <img src="S__11362332.jpg" alt="Venue1 information" loading="lazy" style="width:100%;height:auto;display:block;">
+    </div>
+  </section>
+
+  <section id="Venue2">
+    <h2>立法院国会康園餐厅</h2>
+    <div class="Venue1-image">
+      <img src="S__11362334.jpg" alt="Venue2 information" loading="lazy" style="width:100%;height:auto;display:block;">
+    </div>
+  </section>
+
+  <section id="Venue3">
+    <h2>Linjian Night Market</h2>
+    <div class="Venue1-image">
+      <img src="S__11362335.jpg" alt="Venue3 information" loading="lazy" style="width:100%;height:auto;display:block;">
+    </div>
+  </section>
+
+  <section id="venue">
+    <h2>Venue Information</h2>
+    <p style="font-size: 150%;">Venue: NTNU Extension Center, Lecture room 213<br>No 129, Sec. 1, Heping East Rd., Da-an dist., Taipei</p>
+    <p style="font-size: 150%;">Transportation tips: Metro station, buses, parking info, nearby hotels.</p>
+    <div style="height:600px;border-radius:8px;overflow:hidden;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28921.456212181547!2d121.49563001562498!3d25.027896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9845553d96b%3A0x6d5a89871bd2604b!2z5ZyL56uL6Ie654Gj5bir56-E5aSn5a246YCy5L-u5o6o5buj5a246Zmi!5e0!3m2!1szh-TW!2stw!4v1758865934590!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 </main>
@@ -157,15 +222,23 @@
 <footer style="text-align:center;padding:20px;color:#666;font-size:14px">© RETR-9 / TJSReC-2</footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const sideNav = document.querySelector('.side-nav');
-  const toggle = document.querySelector('.side-toggle span');
-  const toggleArea = document.querySelector('.side-toggle');
+document.addEventListener('DOMContentLoaded', function() {
+    const nav = document.getElementById('sideNav');
+    const toggleBtn = document.getElementById('navToggle');
 
-  toggleArea.addEventListener('click', () => {
-    const collapsed = sideNav.classList.toggle('collapsed');
-    toggle.textContent = collapsed ? '⮜' : '⮞';
-  });
+    toggleBtn.addEventListener('click', function() {
+        const isHidden = nav.classList.toggle('side-nav-hidden');
+
+        if (isHidden) {
+            // 隱藏 side-nav，只顯示箭頭
+            toggleBtn.innerHTML = '&lt;'; // 箭頭向左
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        } else {
+            // 顯示 side-nav
+            toggleBtn.innerHTML = '&raquo;'; // 箭頭向右
+            toggleBtn.setAttribute('aria-expanded', 'true');
+        }
+    });
 });
 </script>
 
