@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RETR-9 / TJSReC-2 — Conference</title>
+  <style>
+    :root{
+      --accent:#e6c89a;
+      --nav-bg: rgba(255,255,255,0.85);
+      --text-dark: #2b2b2b;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:#f6f4f2;
+      color:var(--text-dark);
+    }
+
+    .hero {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      overflow: hidden;
+    }
+    .hero-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* === 收合導覽列樣式 === */
+    .side-nav {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, rgba(255,179,71,0.5), rgba(255,126,95,0.5));
+      backdrop-filter: blur(6px);
+      border-radius: 12px 0 0 12px;
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: stretch;
+      transition: all 0.4s ease;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .side-toggle {
+      width: 40px;
+      background: rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 8px 0 0 8px;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .side-toggle:hover { background: rgba(255,255,255,0.4); }
+
+    .side-toggle span {
+      display: inline-block;
+      font-size: 22px;
+      color: #fff;
+      pointer-events: none;
+      transition: transform 0.3s ease;
+    }
+
+    .side-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-left: 10px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .side-nav ul{
+      list-style: none;
+      margin: 0;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .side-nav a{
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 700;
+      font-size: 150%;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .side-nav a:hover{ background: rgba(255,255,255,0.2); transform: scale(1.05); }
+
+    .side-nav.collapsed .side-content {
+      opacity: 0;
+      width: 0;
+      margin: 0;
+      pointer-events: none;
+    }
+
+    .side-nav.collapsed {
+      padding: 12px 6px;
+      width: 40px;
+    }
+
+    main{max-width:1100px;margin:36px auto;padding:18px}
+    section{padding:48px 18px;border-radius:12px;background:white;margin-bottom:20px;box-shadow:0 6px 18px rgba(20,20,20,0.05);z-index: 10}
+    section h2{margin-top:0}
+
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <img src="header-2217x413.jpg" alt="RETR-9 Conference Header" class="hero-img">
+</header>
+
+<nav class="side-nav" aria-label="Page navigation">
+  <div class="side-toggle"><span>⮞</span></div>
+  <div class="side-content">
+    <ul>
+      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfGPV6LD3SnmQhlzzhXizz6SNNKymEwTgCN11uXiE5nYMAWpQ/viewform?pli=1" target="_blank">Registration Form</a></li>
+      <li><a href="https://ntnucamp.sce.ntnu.edu.tw/2025TJSReC/login.php" target="_blank">Registration Payment</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#Venue1">Venue Information</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <section id="program">
+    <h2>Program</h2>
+    <div class="program-image">
+      <img src="program.jpg" alt="Program Schedule" loading="lazy" style="width:100%;height:auto;display:block;">
+    </div>
+  </section>
+
+  <section id="Venue1">
+    <h2>Venue Information</h2>
+    <div class="Venue1-image">
+      <img src="S__11362332.jpg" alt="Venue1 information" loading="lazy" style="width:100%;height:auto;display:block;">
+    </div>
+  </section>
+</main>
+
+<footer style="text-align:center;padding:20px;color:#666;font-size:14px">© RETR-9 / TJSReC-2</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const sideNav = document.querySelector('.side-nav');
+  const toggle = document.querySelector('.side-toggle span');
+  const toggleArea = document.querySelector('.side-toggle');
+
+  toggleArea.addEventListener('click', () => {
+    const collapsed = sideNav.classList.toggle('collapsed');
+    toggle.textContent = collapsed ? '⮜' : '⮞';
+  });
+});
+</script>
+
+</body>
+</html>
